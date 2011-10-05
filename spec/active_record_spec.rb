@@ -31,6 +31,8 @@ describe Machinist::ActiveRecord do
         User.make!(:username => "")
       }.should raise_error(ActiveRecord::RecordInvalid)
     end
+
+    pending 'should protect against model#reload bug'
   end
 
   context "associations support" do

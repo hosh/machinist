@@ -3,9 +3,10 @@ module Machinist::ActiveRecord
 
     # Make and save an object.
     def make!(attributes = {})
-      object = make(attributes)
-      object.save!
-      object.reload
+      make(attributes).tap do |object|
+        object.save!
+        object.reload
+      end
     end
 
     def lathe_class #:nodoc:
